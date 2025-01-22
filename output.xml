@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.12.6 on win32)" generated="2025-01-22T16:14:39.026294" rpa="false" schemaversion="5">
+<suite id="s1" name="Finalizar PO Test" source="c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\testes\Finalizar_PO_Test.robot">
+<test id="s1-t1" name="CT012 — Validar preenchimento “Informações do Candidato” ao clicar em “Finalizar e Enviar”" line="26">
+<kw name="Dado que esteja em Gestão de Clientes" owner="GerenciarCliente">
+<kw name="que esteja na home page" owner="Base">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:39.319044" level="INFO">Opening browser 'Chrome' to base url 'https://challenge.primecontrol.com.br/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-01-22T16:14:39.319044" elapsed="3.126271"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-01-22T16:14:42.445315" elapsed="0.041255"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${HOME}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-01-22T16:14:42.489564" elapsed="0.094745"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:39.318042" elapsed="3.267295"/>
+</kw>
+<kw name="clico no botão fazer login" owner="Login">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${HOME_BTN_LOGIN}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-01-22T16:14:42.585337" elapsed="0.038621"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:42.627003" level="INFO">Clicking element 'xpath=//a[contains(.,'Fazer Login')]'.</msg>
+<arg>${HOME_BTN_LOGIN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:42.626012" elapsed="0.441229"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:42.585337" elapsed="0.481904"/>
+</kw>
+<kw name="insiro dados já cadastrado" owner="Login">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:43.068241" level="INFO">Typing text 'ana1a.bsi@outlook.com' into text field 'id=floatingInput'.</msg>
+<arg>${HOME_INPUT_EMAIL}</arg>
+<arg>${HOME_EMAIL_CADASTRADO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:43.068241" elapsed="0.170617"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:43.239847" level="INFO">Typing text '123456' into text field 'id=floatingPassword'.</msg>
+<arg>${HOME_INPUT_PASSWORD}</arg>
+<arg>${HOME_SENHA_CADASTRO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:43.238858" elapsed="0.094052"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:43.333907" level="INFO">Clicking button 'xpath=//button[@type='button']'.</msg>
+<arg>${LOGIN_BTN_ACESSAR}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:43.332910" elapsed="0.092753"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:43.067241" elapsed="0.358422"/>
+</kw>
+<kw name="sou direcionado para Gestão de Clientes" owner="Login">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${PAGE_GCLIENTE}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-01-22T16:14:43.426658" elapsed="1.342143"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:43.425663" elapsed="1.343138"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:39.317044" elapsed="5.452830"/>
+</kw>
+<kw name="E clico na opção Finalizar" owner="Finalizar">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${FINALIZAR_BTN}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-01-22T16:14:44.773081" elapsed="0.021648"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:44.795729" level="INFO">Clicking element 'xpath=(//a[@href='/app/home'])[1]'.</msg>
+<arg>${FINALIZAR_BTN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:44.795729" elapsed="0.084308"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:44.770795" elapsed="0.109242"/>
+</kw>
+<kw name="Quando modal for exibido com mensagem “Para submeter os dados do projeto, clique em 'Enviar'. Se desejar sair, clique em 'Logout'.”" owner="Finalizar">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:44.911951" level="INFO">${texto_modal} = Para submeter os dados do projeto, clique em 'Enviar'. Se desejar sair, clique em 'Logout'.
+Logout
+Enviar</msg>
+<var>${texto_modal}</var>
+<arg>${MODAL_MSG}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:44.882646" elapsed="0.030303"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${texto_modal}</arg>
+<arg>submeter</arg>
+<arg>case_insensitive=True</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-01-22T16:14:44.912949" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:44.881034" elapsed="0.031915"/>
+</kw>
+<kw name="E clico na opção Enviar" owner="Finalizar">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:44.914944" level="INFO">Clicking element 'xpath=//button[contains(.,'Enviar')]'.</msg>
+<arg>${BTN_ENVIAR}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:44.914944" elapsed="0.143589"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:44.914183" elapsed="0.144350"/>
+</kw>
+<kw name="E modal Informações do Candidato é exibido" owner="Finalizar">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${GC_ABA_CADASTRARCLIENTE}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-01-22T16:14:45.059534" elapsed="0.021941"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:45.058533" elapsed="0.022942"/>
+</kw>
+<kw name="E preencho informações" owner="Finalizar">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:45.083470" level="INFO">Typing text 'Susana' into text field 'xpath=//input[@id='nome']'.</msg>
+<arg>${BTN_NOME}</arg>
+<arg>${NOME_CANDIDATO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:45.083470" elapsed="0.114097"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:45.198122" level="INFO">Typing text '1198533-8770' into text field 'xpath=//input[contains(@id,'telefone')]'.</msg>
+<arg>${BTN_TELEFO}</arg>
+<arg>${TELEFONE_CANDIDATO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:45.198122" elapsed="0.105644"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:45.304772" level="INFO">Typing text 'https://github.com/Susana-Berga' into text field 'xpath=//input[contains(@id,'githubLink')]'.</msg>
+<arg>${BTN_LINK}</arg>
+<arg>${LINK}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:45.304772" elapsed="0.106381"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:45.411153" level="INFO">Typing text 'Kelly' into text field 'xpath=//input[contains(@id,'nomeRecrutador')]'.</msg>
+<arg>${BTN_RECRITE}</arg>
+<arg>${NOME_RECRUITE}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:45.411153" elapsed="0.077723"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:45.082504" elapsed="0.407396"/>
+</kw>
+<kw name="E salvo informações" owner="Finalizar">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-01-22T16:14:45.490873" level="INFO">Clicking element 'xpath=//div[@class='modal-buttons']'.</msg>
+<arg>${BTN_SALVAR_CANDIDATO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-22T16:14:45.490873" elapsed="0.068813"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-01-22T16:14:55.560059" level="INFO">Slept 10 seconds.</msg>
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-01-22T16:14:45.559686" elapsed="10.001427"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:45.490873" elapsed="10.071235"/>
+</kw>
+<kw name="Então sistema retorna para Gestão de Clientes" owner="Finalizar">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CG_VALIDAR}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-01-22T16:14:55.568050" elapsed="0.030184"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:55.565060" elapsed="0.034133"/>
+</kw>
+<status status="PASS" start="2025-01-22T16:14:39.315048" elapsed="16.285152"/>
+</test>
+<status status="PASS" start="2025-01-22T16:14:39.032276" elapsed="16.571905"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Finalizar PO Test">Finalizar PO Test</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-01-22T16:14:39.296129" level="ERROR">Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\resources\Page\GerenciarCliente.resource' on line 6: Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\testes\Login_PO_Test.robot' on line 10: Resource file with 'Test Cases' section is invalid.</msg>
+<msg time="2025-01-22T16:14:39.300088" level="ERROR">Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\resources\Page\Finalizar.resource' on line 9: Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\testes\GerenciarCliente_PO_Test.robot' on line 16: Resource file with 'Test Cases' section is invalid.</msg>
+<msg time="2025-01-22T16:14:39.303084" level="ERROR">Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\resources\Page\Finalizar.resource' on line 10: Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\testes\Login_PO_Test.robot' on line 10: Resource file with 'Test Cases' section is invalid.</msg>
+<msg time="2025-01-22T16:14:39.305076" level="ERROR">Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\resources\Page\Finalizar.resource' on line 11: Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\testes\Home_PO_Test.robot' on line 9: Resource file with 'Test Cases' section is invalid.</msg>
+<msg time="2025-01-22T16:14:39.308079" level="ERROR">Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\testes\Finalizar_PO_Test.robot' on line 12: Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\testes\GerenciarCliente_PO_Test.robot' on line 16: Resource file with 'Test Cases' section is invalid.</msg>
+<msg time="2025-01-22T16:14:39.311060" level="ERROR">Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\testes\Finalizar_PO_Test.robot' on line 13: Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\testes\Login_PO_Test.robot' on line 10: Resource file with 'Test Cases' section is invalid.</msg>
+<msg time="2025-01-22T16:14:39.313054" level="ERROR">Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\testes\Finalizar_PO_Test.robot' on line 14: Error in file 'c:\Users\Sistemas\.vscode\Desafio_Robot_Susana_Bergamo\testes\Home_PO_Test.robot' on line 9: Resource file with 'Test Cases' section is invalid.</msg>
+</errors>
+</robot>
