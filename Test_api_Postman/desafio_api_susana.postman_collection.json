@@ -1,0 +1,786 @@
+{
+	"info": {
+		"_postman_id": "ceb27c2b-001e-4cd7-a26d-3446d91f1dcb",
+		"name": "desafio_api_susana",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32369515"
+	},
+	"item": [
+		{
+			"name": "listClients",
+			"item": [
+				{
+					"name": "CT01 - Teste de resposta bem sucedida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code deve ser 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"deve conter lista\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/listClients",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"listClients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT02 - Teste de validação dos campos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"deve conter lista\", function () {\r",
+									"  var schema = {\r",
+									"    type: \"array\",\r",
+									"    items: {\r",
+									"      type: \"object\",\r",
+									"      properties: {\r",
+									"        id: {type: \"string\"},\r",
+									"        nome: {type: \"string\"},\r",
+									"        email: {type: \"string\"},\r",
+									"        fone: {type: \"string\"},\r",
+									"        fotoPerfil: {type: [\"string\", \"null\"]}\r",
+									"      },\r",
+									"      required: [\"id\", \"nome\", \"email\", \"fone\", \"fotoPerfil\"]\r",
+									"    }\r",
+									"  };\r",
+									"\r",
+									"  pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code deve ser 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/listClients",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"listClients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT03 - Teste de validação de endpoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code deve ser 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/listClient",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"listClient"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "addCliente",
+			"item": [
+				{
+					"name": "CT01 - Teste de adição bem sucedida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code deve ser 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"mensagem de sucesso\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Cliente cadastrado com sucesso!\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id cadastrado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Susana\",\r\n    \"email\": \"susana@teste.com\",\r\n    \"fone\": 11999999999,\r\n    \"fotoPerfil\": \"https://media.licdn.com/dms/image/v2/C4E0BAQEcr5g6MbO-EA/company-logo_200_200/company-logo_200_200/0/1630645917795/prime_control_logo?e=2147483647&v=beta&t=PAb7B62TOouPGsiFtq_AhBhSeZzc6Y1Mh9u_86fHFwY\",\r\n    \"cep\": \"01001-000\",\r\n    \"endereco\": \"Rua Teste\",\r\n    \"complemento\": \"Apartamento 1\",\r\n    \"pais\": \"Brasil\",\r\n    \"genero\": \"Feminino\",\r\n    \"ferramentas\": [\"Robot\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/addClient",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"addClient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT02 - Teste de campos obrigatorios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code deve ser 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"validadndo mensagem de erro\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Informe o nome\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"\",\r\n    \"email\": \"susana@teste.com\",\r\n    \"fone\": 11999999999,\r\n    \"fotoPerfil\": \"https://media.licdn.com/dms/image/v2/C4E0BAQEcr5g6MbO-EA/company-logo_200_200/company-logo_200_200/0/1630645917795/prime_control_logo?e=2147483647&v=beta&t=PAb7B62TOouPGsiFtq_AhBhSeZzc6Y1Mh9u_86fHFwY\",\r\n    \"cep\": \"01001-000\",\r\n    \"endereco\": \"Rua Teste\",\r\n    \"complemento\": \"Apartamento 1\",\r\n    \"pais\": \"Brasil\",\r\n    \"genero\": \"Feminino\",\r\n    \"ferramentas\": [\"Robot\", \"Cypress\"]\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/addClient",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"addClient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT03 - Teste de validação do e-mail e URL do perfil",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code deve ser 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"validadndo mensagem de erro\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"E-mail em formato inválido.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Susana\",\r\n    \"email\": \"susanateste.com\",\r\n    \"fone\": 11999999999,\r\n    \"fotoPerfil\": \"https://media.licdn.com/dms/image/v2/C4E0BAQEcr5g6MbO-EA/company-logo_200_200/company-logo_200_200/0/1630645917795/prime_control_logo?e=2147483647&v=beta&t=PAb7B62TOouPGsiFtq_AhBhSeZzc6Y1Mh9u_86fHFwY\",\r\n    \"cep\": \"01001-000\",\r\n    \"endereco\": \"Rua Teste\",\r\n    \"complemento\": \"Apartamento 1\",\r\n    \"pais\": \"Brasil\",\r\n    \"genero\": \"Feminino\",\r\n    \"ferramentas\": [\"Robot\", \"Cypress\"]\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/addClient",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"addClient"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "deleteClient",
+			"item": [
+				{
+					"name": "CT01 - Teste de exclusão bem sucedida",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const url = 'https://api-challenge.primecontrol.com.br/addClient';\r",
+									"\r",
+									"const userPayload = {\r",
+									"    nome: \"Usuário QA\",\r",
+									"    email: \"usuario.qa@teste.com\",\r",
+									"    fone: 11999999999,\r",
+									"    fotoPerfil: \"https://example.com/perfil.jpg\",\r",
+									"    cep: \"01001-000\",\r",
+									"    endereco: \"Rua QA\",\r",
+									"    complemento: \"Sala 1\",\r",
+									"    pais: \"Brasil\",\r",
+									"    genero: \"Não informado\",\r",
+									"    ferramentas: [\"Postman\", \"Cypress\"]\r",
+									"};\r",
+									"pm.sendRequest({\r",
+									"    url: url,\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify(userPayload)\r",
+									"    }\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Erro ao cadastrar usuário:', err);\r",
+									"    } else {\r",
+									"        // Extrair o ID do usuário da resposta\r",
+									"        const responseData = response.json();\r",
+									"        const CLIENT_ID = responseData.id;\r",
+									"if (CLIENT_ID) {\r",
+									"            pm.environment.set(\"CLIENT_ID\", CLIENT_ID);\r",
+									"            console.log(`Usuário cadastrado com sucesso. ID: ${CLIENT_ID}`);\r",
+									"        } else {\r",
+									"            console.error('Erro: ID do usuário não retornado na resposta.');\r",
+									"        }\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code deve ser 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"mensagem de exclusao\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Cliente excluído com sucesso!\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/deleteClient/{{CLIENT_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"deleteClient",
+								"{{CLIENT_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT02 - Teste de cliente não encontrado",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const url = 'https://api-challenge.primecontrol.com.br/addClient';\r",
+									"\r",
+									"const userPayload = {\r",
+									"    nome: \"Usuário QA\",\r",
+									"    email: \"usuario.qa@teste.com\",\r",
+									"    fone: 11999999999,\r",
+									"    fotoPerfil: \"https://example.com/perfil.jpg\",\r",
+									"    cep: \"01001-000\",\r",
+									"    endereco: \"Rua QA\",\r",
+									"    complemento: \"Sala 1\",\r",
+									"    pais: \"Brasil\",\r",
+									"    genero: \"Não informado\",\r",
+									"    ferramentas: [\"Postman\", \"Cypress\"]\r",
+									"};\r",
+									"pm.sendRequest({\r",
+									"    url: url,\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify(userPayload)\r",
+									"    }\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Erro ao cadastrar usuário:', err);\r",
+									"    } else {\r",
+									"        // Extrair o ID do usuário da resposta\r",
+									"        const responseData = response.json();\r",
+									"        const CLIENT_ID = responseData.id;\r",
+									"if (CLIENT_ID) {\r",
+									"            pm.environment.set(\"CLIENT_ID\", CLIENT_ID);\r",
+									"            console.log(`Usuário cadastrado com sucesso. ID: ${CLIENT_ID}`);\r",
+									"        } else {\r",
+									"            console.error('Erro: ID do usuário não retornado na resposta.');\r",
+									"        }\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code deve ser 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"mensagem de cliente nao encontrado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Cliente não encontrado.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/deleteClient/{{INVALID_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"deleteClient",
+								"{{INVALID_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT03 - Teste de exclusão sem ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const url = 'https://api-challenge.primecontrol.com.br/addClient';\r",
+									"\r",
+									"const userPayload = {\r",
+									"    nome: \"Usuário QA\",\r",
+									"    email: \"usuario.qa@teste.com\",\r",
+									"    fone: 11999999999,\r",
+									"    fotoPerfil: \"https://example.com/perfil.jpg\",\r",
+									"    cep: \"01001-000\",\r",
+									"    endereco: \"Rua QA\",\r",
+									"    complemento: \"Sala 1\",\r",
+									"    pais: \"Brasil\",\r",
+									"    genero: \"Não informado\",\r",
+									"    ferramentas: [\"Postman\", \"Cypress\"]\r",
+									"};\r",
+									"pm.sendRequest({\r",
+									"    url: url,\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify(userPayload)\r",
+									"    }\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Erro ao cadastrar usuário:', err);\r",
+									"    } else {\r",
+									"        // Extrair o ID do usuário da resposta\r",
+									"        const responseData = response.json();\r",
+									"        const CLIENT_ID = responseData.id;\r",
+									"if (CLIENT_ID) {\r",
+									"            pm.environment.set(\"CLIENT_ID\", CLIENT_ID);\r",
+									"            console.log(`Usuário cadastrado com sucesso. ID: ${CLIENT_ID}`);\r",
+									"        } else {\r",
+									"            console.error('Erro: ID do usuário não retornado na resposta.');\r",
+									"        }\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code deve ser 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"mensagem cliente nao encontrado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Cliente não encontrado.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/deleteClient/{}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"deleteClient",
+								"{}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "updateClient",
+			"item": [
+				{
+					"name": "CT01 - Teste de atualização bem sucedida",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const url = 'https://api-challenge.primecontrol.com.br/addClient';\r",
+									"\r",
+									"const userPayload = {\r",
+									"    nome: \"Usuário QA\",\r",
+									"    email: \"usuario.qa@teste.com\",\r",
+									"    fone: 11999999999,\r",
+									"    fotoPerfil: \"https://example.com/perfil.jpg\",\r",
+									"    cep: \"01001-000\",\r",
+									"    endereco: \"Rua QA\",\r",
+									"    complemento: \"Sala 1\",\r",
+									"    pais: \"Brasil\",\r",
+									"    genero: \"Não informado\",\r",
+									"    ferramentas: [\"Postman\", \"Cypress\"]\r",
+									"};\r",
+									"pm.sendRequest({\r",
+									"    url: url,\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify(userPayload)\r",
+									"    }\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Erro ao cadastrar usuário:', err);\r",
+									"    } else {\r",
+									"        // Extrair o ID do usuário da resposta\r",
+									"        const responseData = response.json();\r",
+									"        const CLIENT_ID = responseData.id;\r",
+									"if (CLIENT_ID) {\r",
+									"            pm.environment.set(\"CLIENT_ID\", CLIENT_ID);\r",
+									"            console.log(`Usuário cadastrado com sucesso. ID: ${CLIENT_ID}`);\r",
+									"        } else {\r",
+									"            console.error('Erro: ID do usuário não retornado na resposta.');\r",
+									"        }\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code deve ser 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"mensagem de atualização com sucesso\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Cliente atualizado com sucesso!\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"nome\": \"Nome atualizado\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/updateClient/{{CLIENT_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"updateClient",
+								"{{CLIENT_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT02 - Teste de cliente não encontrado",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code deve ser 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"mensagem de cliente nao encontrado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Error updating client: 5 NOT_FOUND: No document to update: projects/pagina-teste-prime/databases/(default)/documents/clientes/12345\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"nome\": \"Nome atualizado\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/updateClient/{{INVALID_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"updateClient",
+								"{{INVALID_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT03- Teste de atualização sem campos",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code deve ser 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"mensagem de cliente deve informar ao menos um campo\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Informe ao menos um campo para atualizar\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/updateClient/{{CLIENT_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"updateClient",
+								"{{CLIENT_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
