@@ -1,0 +1,12 @@
+*** Variables ***
+${FINALIZAR_BTN}                        xpath=(//a[@href='/app/home'])[1]
+${BTN_LOGOUT}                           xpath=//button[contains(.,'Logout')]
+${MODAL_MSG}                            xpath=//div[@class='modal-finalizar']
+${BTN_ENVIAR}                           xpath=//button[contains(.,'Enviar')]
+${LOGIN_PAGE}                           xpath=//h1[contains(.,'Login')]
+${MODAL_CANDIDATO}                      xpath=//h3[contains(.,'Informações do Candidato')]
+${BTN_NOME}                             xpath=//input[@id='nome']
+${BTN_TELEFO}                           xpath=//input[contains(@id,'telefone')]
+${BTN_LINK}                             xpath=//input[contains(@id,'githubLink')]
+${BTN_RECRITE}                          xpath=//input[contains(@id,'nomeRecrutador')]
+${BTN_SALVAR_CANDIDATO}                 xpath=//div[@class='modal-buttons']

@@ -1,26 +1,5 @@
 *** Settings ***
-Documentation   Desafio Robot Framework Prime Control- Ações e elementos da homepage 
-
 Resource    ../../Base.resource
-Resource    ../../resources/Page/Home.resource
-
-*** Variables ***
-${HOME_BTN_LOGIN}                xpath=//a[contains(.,'Fazer Login')]
-${HOME_EMAIL_CADASTRADO}         ana1a.bsi@outlook.com
-${HOME_SENHA_CADASTRO}           123456
-${HOME_SENHA_INVALIDA}           789456
-${HOME_INPUT_EMAIL}              id=floatingInput
-${HOME_INPUT_PASSWORD}           id=floatingPassword
-${LOGIN_BTN_ACESSAR}             xpath=//button[@type='button']
-${PAGE_GCLIENTE}                 xpath=//h1[contains(.,'Gestão de Clientes')]
-${LOGIN_MSG_ERROR}               xpath=//div[@class='alert alert-danger mt-2'][contains(.,'E-mail ou senha inválida.')]
-${LOGIN_RESERTSENHA}             xpath=//a[contains(.,'Esqueci minha senha')]
-${PAGE_RESERTSENHA}              xpath=//h1[contains(.,'Recuperar Senha')]
-${LOGIN_INPUT_RESERTSENHA}       id=floatingInput
-${LOGIN_BTN_ENVIORESERT}         xpath=//button[contains(.,'Enviar')]
-${LOGIN_MSG_RESERTSENHA}         xpath=//div[@class='alert alert-success mt-2']   
-${file_path}                      ./screenshots/
-
 
 
 *** Keywords ***

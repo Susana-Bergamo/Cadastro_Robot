@@ -1,14 +1,8 @@
 Language: Brazilian Portuguese
 *** Settings ***
-
-Documentation     
-
 Resource    ../Base.resource
-Resource    ../resources/Page/Login.resource
-
 
 *** Test Cases ***
-
 CT003 — Realizar Login com sucesso
     Dado que esteja na home page
     E clico no botão fazer login

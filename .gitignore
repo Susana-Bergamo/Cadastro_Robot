@@ -7,6 +7,7 @@ browser/
 # Diretórios de saída do Robot Framework
 ./output/
 ./reports/
+./results/
 ./logs/
 
 # Arquivos de evidência

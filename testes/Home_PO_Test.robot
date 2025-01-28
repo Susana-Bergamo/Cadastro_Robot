@@ -1,13 +1,9 @@
 Language: Brazilian Portuguese
-*** Settings ***
-
-Documentation     
-
+*** Settings ***  
 Resource    ../Base.resource
 
-
 *** Test Cases ***
-CT001— Criar uma nova Conta com sucesso
+CT001 — Criar uma nova Conta com sucesso
     Dado que esteja na home page 
     E clico no botao criar conta 
     Quando efetuo cadastro dados válidos
